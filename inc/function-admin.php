@@ -25,6 +25,7 @@ add_action( 'admin_menu', 'jordantheme_add_admin_page');
 
 function jordantheme_admintheme_settings() {
   // register_setting( $option_group, $option_name, $args = array() )
+  register_setting( 'jt-settings-group', 'profile_picture');
   register_setting( 'jt-settings-group', 'first_name' );
   register_setting( 'jt-settings-group', 'last_name' );
   register_setting( 'jt-settings-group', 'twitter_link', 'jt_sanitize_twitter_link' );
@@ -34,24 +35,30 @@ function jordantheme_admintheme_settings() {
 
   add_settings_section( 'jt-general-options', 'JT Options', 'jt_general_options', 'jordan_theme_config' );
 
-// add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() );
-add_settings_field( 'setting-name', 'Full Name', 'jt_generalsetting_fullname', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
+  // add_settings_field( $id, $title, $callback, $page, $section = 'default', $args = array() );
+add_settings_field( 'setting-profile-picture', 'Profile Picture', 'jt_generalsetting_profile_picture', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
+  add_settings_field( 'setting-name', 'Full Name', 'jt_generalsetting_fullname', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
 
-add_settings_field( 'setting-description', 'User Description', 'jt_generalsetting_userdescription', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
+  add_settings_field( 'setting-description', 'User Description', 'jt_generalsetting_userdescription', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
 
-add_settings_field( 'setting-twitter', 'Twitter Profile', 'jt_generalsetting_twitter', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
+  add_settings_field( 'setting-twitter', 'Twitter Profile', 'jt_generalsetting_twitter', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
 
-add_settings_field( 'setting-facebook', 'Facebook Profile', 'jt_generalsetting_facebook', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
+  add_settings_field( 'setting-facebook', 'Facebook Profile', 'jt_generalsetting_facebook', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
 
-add_settings_field( 'setting-linkedin', 'Linkedin Profile', 'jt_generalsetting_linkedin', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
+  add_settings_field( 'setting-linkedin', 'Linkedin Profile', 'jt_generalsetting_linkedin', 'jordan_theme_config', 'jt-general-options' /*$args = array()*/ );
 
 }
 
 /*===================
- settings fields functions
+ settings page fields functions
  ====================
 */
 
+function jt_generalsetting_profile_picture() {
+  $picture = esc_attr( get_option('profile_picture'));
+  echo '<input type="hidden" name="profile_picture" value="'.$picture.'" id="profile-picture"/>';
+  echo '<input type="button" class="button button-secondary" id="upload_profile_picture" value="Upload Profile Picture"/>';
+}
 function jt_generalsetting_fullname() {
   $firstname = esc_attr( get_option('first_name'));
   $lastname = esc_attr( get_option('last_name'));
@@ -95,7 +102,7 @@ function jt_general_options() {
 
 function jordantheme_admin_config() {
   //generate all admin pages
-  require_once( get_template_directory() . "/inc/templates/jt-admin.php");
+  require_once( get_template_directory() . "/inc/templates/jt-admin-general-settings.php");
 
 }
 function jordantheme_css(){

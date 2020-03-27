@@ -9,3 +9,85 @@ Licence: MIT;
 Licence URI:
 Tags: New Theme, Responsive, Premium Theme
 */
+.border{border:1px solid black;}
+.site-nav ul{
+  margin:0;
+  padding:0;
+}
+
+.header-search{
+  float: right;
+  margin-top: 5px;
+}
+
+.site-nav ul:before, .site-nav ul:after {
+  content:"";
+  display: table;
+}
+.site-nav ul:after {clear:both;}
+.site-nav ul {*zoom:1;}
+.site-nav ul li {
+  list-style: none;
+  float:left;
+}
+
+.site-header nav ul li a:link,
+.site-header nav ul li a:visited {
+  display:block;
+  padding: 10px;
+  border: 1px solid black;
+  /* border-bottom: none; */
+  text-decoration: none;
+}
+.site-header nav ul li:hover{background-color: #d6daff;}
+
+.site-header nav ul li.current-menu-item a:link,
+.site-header nav ul li.current-menu-item a:visited,
+.site-header nav ul li.current-page-ancestor a:link,
+.site-header nav ul li.current-page-ancestor a:visited
+{
+  background-color: #006ec3;
+  color: #fff;
+}
+
+/* child links */
+.children-links{
+  margin: 10px 0 20px 0;
+  font-size: 80%;
+}
+.children-links li{
+  margin: 3px 20px 0 0;
+}
+.children-links .parent-link{
+  float: left;
+  margin-right: 20px;
+  padding-right: 20px;
+  border-right: 2px solid #717278;
+  font-size: 120%;
+  font-weight: bold;
+}
+.children-links .parent-link a:link,
+.children-links .parent-link a:visited{
+  color: #333;
+}
+.children-links .current_page_item a:link,
+.children-links .current_page_item a:visited{
+  text-decoration: underline;
+  color: #54504f;
+}
+
+img{
+  max-width: 100%;
+  height: auto;
+}
+section#bottom{
+  background-color: #6fa9b1;
+  padding:20px 0;
+}
+footer{
+  background-color: #000;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.footer-nav ul li {list-style:none; float: right;padding-right: 10px;}

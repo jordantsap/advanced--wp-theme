@@ -10,10 +10,12 @@ function jt_load_admin_scripts($hook) {
   if ('toplevel_page_jordan_theme_config' != $hook) {
     return;
   }
-  //register style file
-  wp_register_style( 'jt_admin', get_template_directory_uri() . '/css/jt-admin.css', array(), '1.0', 'all' );
-  //trigger above style
-  wp_enqueue_style( 'jt_admin' );
+
+  // wp uploader function
+  wp_enqueue_media();
+  //admin js file
+  wp_register_script( 'jt-admin-script', get_template_directory_uri() . '/js/jt-admin.js', array('jquery'), '1.0.0', true );
+  wp_enqueue_script('jt-admin-script');
 }
 
 // assign trigger only in admin area with -> add_action( $tag, $function_to_add, $priority = 10, $accepted_args = 1 )
