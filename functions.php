@@ -11,10 +11,13 @@ function myStyles() {
 }
 add_action( 'wp_enqueue_scripts', 'myStyles');
 
-//register style file
-wp_register_style( 'jt_admin', get_template_directory_uri() . '/css/jt-admin.css', array(), '1.0', 'all' );
-//trigger above style
-wp_enqueue_style( 'jt_admin' );
+//register admin style file
+function jordanthemeadminstyles(){
+  wp_register_style( 'jt_admin', get_template_directory_uri() . '/css/jt-admin.css', array(), '1.0', 'all' );
+  //trigger above style
+  wp_enqueue_style( 'jt_admin' );
+}
+add_action( 'wp_enqueue_scripts', 'jordanthemeadminstyles');
 
 // get top parent id with custom function
 function get_top_ancestor_id() {
